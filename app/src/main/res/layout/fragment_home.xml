@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lavendar"
+    tools:context=".HomeFragment">
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:text="Let’s get your gig noticed!"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <!-- Horizontal Summary Cards under Search -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardHired"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cardPending"
+        app:layout_constraintHorizontal_chainStyle="spread_inside">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🧑‍💼\n6 Hired"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:padding="12dp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPending"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintStart_toEndOf="@id/cardHired"
+        app:layout_constraintEnd_toStartOf="@id/cardUpcoming">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏳\n2 Pending"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:padding="12dp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardUpcoming"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintStart_toEndOf="@id/cardPending"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📅\n1 Gig"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:padding="12dp" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Reminder Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/reminderCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/NoticeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="📅 Upcoming Event"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/Notice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="You have an event tomorrow at 6:00 PM."
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/NoticeTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Applicant Summary Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/applicantCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/light_blue"
+        app:layout_constraintTop_toBottomOf="@id/reminderCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvApplicantSummaryTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="👥 Hired Applicants"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvApplicantList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="You hired 6 applicants:\n- John\n- Aina\n- Nurul..."
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvApplicantSummaryTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
