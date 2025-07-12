@@ -1,0 +1,54 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/lavendar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etGigName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gig Name"
+            android:inputType="textCapWords" />
+
+        <EditText
+            android:id="@+id/etGigLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:inputType="textCapWords"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/etGigDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Details"
+            android:inputType="textMultiLine"
+            android:minLines="4"
+            android:layout_marginTop="12dp"/>
+
+        <ImageView
+            android:id="@+id/imgGigPoster"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="12dp"
+            android:background="#DDDDDD"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add_photo" />
+
+        <Button
+            android:id="@+id/btnUploadGig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Gig"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/dark_blue"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="light_gray">#F9F9F9</color>
+    <color name="surface_white">#FFFFFF</color>
+
+
+    <color name="lavendar">#8692f7</color>
+    <!-- Text Colors -->
+    <color name="headline_text">#2F2E41</color>
+    <color name="subtext">#4A4A4A</color>
+    <color name="medium_gray">#707070</color>
+
+    <!-- Brand Colors -->
+    <color name="primary_purple">#7000FF</color>
+    <color name="secondary_orange">#FFA500</color>
+
+    <!-- Logo Gradient Colors -->
+    <color name="gradient_blue">#0091C2</color>
+    <color name="gradient_green">#59C95F</color>
+
+    <!-- Icon/Logo Details -->
+    <color name="briefcase_red">#E93E3A</color>
+    <color name="briefcase_top_white">#F4F4F4</color>
+    <color name="briefcase_border">#2F2E41</color>
+
+    <!-- Status Colors -->
+    <color name="success_green">#59C95F</color>
+    <color name="error_red">#E93E3A</color>
+
+    <!-- Shadows & Borders -->
+    <color name="button_shadow">#CCCCCC</color>
+
+    <!-- Additional -->
+    <color name="dark_blue">#32357a</color>
+    <color name="light_blue">#f2f1f6</color>
+</resources>
