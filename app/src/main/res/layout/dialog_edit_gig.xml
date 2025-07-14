@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/dialogImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_default_poster"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Gig Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gig Name:" />
+        <EditText
+            android:id="@+id/dialogGigName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter gig name"
+            android:inputType="textCapWords" />
+
+        <!-- Location -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location:"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/dialogLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter location"
+            android:inputType="textCapWords" />
+
+        <!-- Number of Workers -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Workers:"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/dialogWorkers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter number"
+            android:inputType="number" />
+
+        <!-- Salary -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salary:"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/dialogSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. RM150"
+            android:inputType="numberDecimal" />
+
+        <!-- Schedule Section Title -->
+        <!-- Schedule Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schedule"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Schedule TextView (or EditText for editing) -->
+        <!-- Schedule TextView (or EditText for editing) -->
+
+        <!-- Container for dynamically added schedule items -->
+        <LinearLayout
+            android:id="@+id/scheduleContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            />
+
+        <!-- Add Schedule Button -->
+        <Button
+            android:id="@+id/btnAddSchedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Schedule"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
+
+        <!-- Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details:"
+            android:layout_marginTop="12dp" />
+        <EditText
+            android:id="@+id/dialogDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter job details"
+            android:inputType="textMultiLine"
+            android:minLines="4" />
+    </LinearLayout>
+</ScrollView>

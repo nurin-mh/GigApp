@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/dialogImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_default_poster"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Gig Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Gig Name:" />
+        <TextView
+            android:id="@+id/dialogGigName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
+
+        <!-- Location -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Location:"
+            android:layout_marginTop="12dp" />
+        <TextView
+            android:id="@+id/dialogLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
+
+        <!-- Number of Workers -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Number of Workers:"
+            android:layout_marginTop="12dp" />
+        <TextView
+            android:id="@+id/dialogWorkers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
+
+        <!-- Salary -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Salary:"
+            android:layout_marginTop="12dp" />
+        <TextView
+            android:id="@+id/dialogSalary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:paddingVertical="4dp" />
+
+        <!-- Schedule Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Schedule"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Schedule Display -->
+        <TextView
+            android:id="@+id/dialogSchedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:maxLines="8"
+            android:padding="8dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details:"
+            android:layout_marginTop="12dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/dialogDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="4"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:padding="8dp" />
+    </LinearLayout>
+</ScrollView>
