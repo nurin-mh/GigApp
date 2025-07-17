@@ -6,6 +6,8 @@
 
     <!-- Optional: permission for fine location, needed if you want user location on the map -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -21,7 +23,7 @@
         <!-- Add your Google Maps API Key here -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_GOOGLE_MAPS_API_KEY_HERE" />
+            android:value="AIzaSyCAsQSnLR010cThQJalFCWm38tal3-SrRc" />
 
         <!-- Launcher activity: MainActivity -->
         <activity

@@ -46,6 +46,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
     //maps
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+
 
     // Firebase libraries (no version numbers needed now)
     implementation(libs.google.firebase.auth)
