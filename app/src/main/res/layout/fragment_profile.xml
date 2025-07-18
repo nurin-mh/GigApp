@@ -11,7 +11,12 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/dark_blue">
+        android:background="@color/dark_blue"
+        android:contentDescription="Profile scroll view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,24 +98,24 @@
         app:layout_constraintTop_toBottomOf="@+id/textPhone" />
 
     <TextView
-        android:id="@+id/textGender"
+        android:id="@+id/textCompanyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Gender"
+        android:text="Company's Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEmail" />
 
     <TextView
-        android:id="@+id/textAddress"
+        android:id="@+id/textPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Address"
+        android:text="Position"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textGender" />
+        app:layout_constraintTop_toBottomOf="@+id/textCompanyName" />
 
     <Button
         android:id="@+id/btnEditProfile"
@@ -120,7 +125,7 @@
         android:textColor="@android:color/white"
         android:backgroundTint="@color/dark_blue"
         android:layout_marginTop="75dp"
-        app:layout_constraintTop_toBottomOf="@+id/textAddress"
+        app:layout_constraintTop_toBottomOf="@+id/textPosition"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -133,7 +138,7 @@
         android:textColor="@android:color/white"
         android:backgroundTint="@android:color/holo_red_light"
         android:layout_marginTop="180dp"
-        app:layout_constraintTop_toBottomOf="@+id/textAddress"
+        app:layout_constraintTop_toBottomOf="@+id/textPosition"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

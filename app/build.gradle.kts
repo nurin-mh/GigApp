@@ -47,7 +47,10 @@ dependencies {
     //maps
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-
+    //Firebase Cloud Messaging
+    implementation ("com.google.firebase:firebase-messaging:23.4.0")
+    // WorkManager for background task
+    implementation ("androidx.work:work-runtime:2.10.2")
 
     // Firebase libraries (no version numbers needed now)
     implementation(libs.google.firebase.auth)

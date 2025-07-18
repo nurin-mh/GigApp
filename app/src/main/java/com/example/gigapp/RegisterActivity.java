@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText etFullName, etEmail, etPhone, etAddress, etPassword, etConfirmPassword, etGender;
+    EditText etFullName, etEmail, etPhone, etCompanyName, etPosition, etPassword, etConfirmPassword;
     Button btnSignUp;
     FirebaseAuth mAuth;
     DatabaseReference usersRef;
@@ -30,10 +30,10 @@ public class RegisterActivity extends AppCompatActivity {
         etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
         etPhone = findViewById(R.id.etPhone);
-        etAddress = findViewById(R.id.etAddress);
+        etCompanyName = findViewById(R.id.etCompanyName);
+        etPosition = findViewById(R.id.etPosition);
         etPassword = findViewById(R.id.etPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        etGender = findViewById(R.id.etGender);
         btnSignUp = findViewById(R.id.btnSignUp);
 
         // Firebase setup
@@ -45,14 +45,14 @@ public class RegisterActivity extends AppCompatActivity {
         String fullName = etFullName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String phone = etPhone.getText().toString().trim();
-        String address = etAddress.getText().toString().trim();
-        String gender = etGender.getText().toString().trim();
+        String companyName = etCompanyName.getText().toString().trim();
+        String position = etPosition.getText().toString().trim();
         String password = etPassword.getText().toString();
         String confirmPassword = etConfirmPassword.getText().toString();
 
         // Validation
         if (TextUtils.isEmpty(fullName) || TextUtils.isEmpty(email) || TextUtils.isEmpty(phone)
-                || TextUtils.isEmpty(address) || TextUtils.isEmpty(gender)
+                || TextUtils.isEmpty(companyName) || TextUtils.isEmpty(position)
                 || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
-                        User user = new User(fullName, email, phone, address, gender);
+                        User user = new User(fullName, email, phone, companyName, position);
 
                         // Save to database
                         usersRef.child(userId).setValue(user)

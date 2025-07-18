@@ -36,30 +36,34 @@
                 android:id="@+id/etGigName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Gig Name" />
+                android:hint="Gig Name"
+                android:minHeight="48dp" />
 
             <EditText
                 android:id="@+id/etGigLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:hint="Location"
-                android:layout_marginTop="12dp" />
+                android:minHeight="48dp" />
 
             <EditText
                 android:id="@+id/etGigWorkers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:hint="Number of Workers Needed"
                 android:inputType="number"
-                android:layout_marginTop="12dp" />
+                android:minHeight="48dp" />
 
             <EditText
                 android:id="@+id/etGigSalary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:hint="Salary (e.g. RM150)"
                 android:inputType="numberDecimal"
-                android:layout_marginTop="12dp" />
+                android:minHeight="48dp" />
 
             <EditText
                 android:id="@+id/etGigDetails"
@@ -74,9 +78,10 @@
                 android:id="@+id/etGigDays"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:hint="Number of Days"
                 android:inputType="number"
-                android:layout_marginTop="12dp" />
+                android:minHeight="48dp" />
 
             <LinearLayout
                 android:id="@+id/datesContainer"

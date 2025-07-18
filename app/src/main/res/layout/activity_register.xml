@@ -59,12 +59,23 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <EditText
-            android:id="@+id/etAddress"
+            android:id="@+id/etCompanyName"
             style="@style/EditTextStyle"
-            android:hint="Address"
+            android:hint="Company's Name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/etPhone"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <EditText
+            android:id="@+id/etPosition"
+            style="@style/EditTextStyle"
+            android:hint="Position"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/etCompanyName"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -76,7 +87,7 @@
             android:inputType="textPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/etAddress"
+            app:layout_constraintTop_toBottomOf="@id/etPosition"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -93,17 +104,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <EditText
-            android:id="@+id/etGender"
-            style="@style/EditTextStyle"
-            android:hint="Gender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="0dp"
@@ -113,7 +113,7 @@
             android:textColor="#FFFFFF"
             android:backgroundTint="#FFA500"
             android:onClick="createUser"
-            app:layout_constraintTop_toBottomOf="@id/etGender"
+            app:layout_constraintTop_toBottomOf="@id/etConfirmPassword"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

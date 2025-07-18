@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView textViewName, textViewPhone, textViewEmail, textViewGender, textViewAddress;
+    private TextView textViewName, textViewPhone, textViewEmail, textViewCompanyName, textViewPosition;
     private Button btnLogout, btnEditProfile;
 
     private FirebaseAuth mAuth;
@@ -54,8 +54,8 @@ public class ProfileFragment extends Fragment {
         textViewName = view.findViewById(R.id.textView2); // Full Name
         textViewPhone = view.findViewById(R.id.textPhone);
         textViewEmail = view.findViewById(R.id.textEmail);
-        textViewGender = view.findViewById(R.id.textGender);
-        textViewAddress = view.findViewById(R.id.textAddress);
+        textViewCompanyName = view.findViewById(R.id.textCompanyName);
+        textViewPosition = view.findViewById(R.id.textPosition);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
 
@@ -67,14 +67,14 @@ public class ProfileFragment extends Fragment {
                     String fullName = snapshot.child("fullName").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
                     String phone = snapshot.child("phone").getValue(String.class);
-                    String gender = snapshot.child("gender").getValue(String.class);
-                    String address = snapshot.child("address").getValue(String.class);
+                    String companyName = snapshot.child("companyName").getValue(String.class);
+                    String position = snapshot.child("position").getValue(String.class);
 
                     textViewName.setText(fullName);
                     textViewEmail.setText("Email: " + email);
                     textViewPhone.setText("Phone: " + phone);
-                    textViewGender.setText("Gender: " + gender);
-                    textViewAddress.setText("Address: " + address);
+                    textViewCompanyName.setText("Company's Name: " + companyName);
+                    textViewPosition.setText("Address: " + position);
                 } else {
                     Toast.makeText(getContext(), "No user data found", Toast.LENGTH_SHORT).show();
                 }

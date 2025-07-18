@@ -29,6 +29,25 @@ public class Gig {
         this.schedule = schedule;
     }
 
+    //New constructor for notification use only
+    public Gig(String gigName, String location, String datetimeStr) {
+        this.gigName = gigName;
+        this.location = location;
+
+        try {
+            String[] parts = datetimeStr.split(" ");
+            if (parts.length == 2) {
+                String datePart = parts[0]; // dd-MM-yyyy
+                String timePart = parts[1]; // HH:mm
+
+                this.schedule = new HashMap<>();
+                this.schedule.put(datePart, timePart);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // Getters and Setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -56,4 +75,35 @@ public class Gig {
 
     public HashMap<String, String> getSchedule() { return schedule; }
     public void setSchedule(HashMap<String, String> schedule) { this.schedule = schedule; }
+
+    // Returns the gig name as title for the notification
+    public String getTitle() {
+        return gigName;
+    }
+
+    // Formats the first date & time into a readable string
+    public String getFormattedDateTime() {
+        if (schedule != null && !schedule.isEmpty()) {
+            String date = schedule.keySet().iterator().next(); // get first date
+            String time = schedule.get(date);
+            return date + " at " + time;
+        }
+        return "No schedule available";
+    }
+
+    // Converts the first date & time into milliseconds for AlarmManager
+    public long getDateTimeMillis() {
+        if (schedule != null && !schedule.isEmpty()) {
+            String date = schedule.keySet().iterator().next(); // get first date
+            String time = schedule.get(date);
+            try {
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm");
+                java.util.Date datetime = sdf.parse(date + " " + time);
+                return datetime.getTime();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return System.currentTimeMillis(); // fallback
+    }
 }

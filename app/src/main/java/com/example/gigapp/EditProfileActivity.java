@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    EditText etName, etPhone, etGender, etAddress;
+    EditText etName, etPhone, etCompanyName, etPosition;
     Button btnSave;
 
     FirebaseAuth mAuth;
@@ -27,8 +27,8 @@ public class EditProfileActivity extends AppCompatActivity {
 
         etName = findViewById(R.id.etEditName);
         etPhone = findViewById(R.id.etEditPhone);
-        etGender = findViewById(R.id.etEditGender);
-        etAddress = findViewById(R.id.etEditAddress);
+        etCompanyName = findViewById(R.id.etEditCompanyName);
+        etPosition = findViewById(R.id.etEditPosition);
         btnSave = findViewById(R.id.btnSaveProfile);
 
         mAuth = FirebaseAuth.getInstance();
@@ -40,8 +40,8 @@ public class EditProfileActivity extends AppCompatActivity {
                     if (snapshot.exists()) {
                         etName.setText(snapshot.child("fullName").getValue(String.class));
                         etPhone.setText(snapshot.child("phone").getValue(String.class));
-                        etGender.setText(snapshot.child("gender").getValue(String.class));
-                        etAddress.setText(snapshot.child("address").getValue(String.class));
+                        etCompanyName.setText(snapshot.child("companyName").getValue(String.class));
+                        etPosition.setText(snapshot.child("position").getValue(String.class));
                     }
                 });
 
@@ -49,10 +49,10 @@ public class EditProfileActivity extends AppCompatActivity {
         btnSave.setOnClickListener(v -> {
             String name = etName.getText().toString().trim();
             String phone = etPhone.getText().toString().trim();
-            String gender = etGender.getText().toString().trim();
-            String address = etAddress.getText().toString().trim();
+            String companyName = etCompanyName.getText().toString().trim();
+            String position = etPosition.getText().toString().trim();
 
-            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(gender) || TextUtils.isEmpty(address)) {
+            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(companyName) || TextUtils.isEmpty(position)) {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -62,9 +62,9 @@ public class EditProfileActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference("Users").child(uid)
                     .child("phone").setValue(phone);
             FirebaseDatabase.getInstance().getReference("Users").child(uid)
-                    .child("gender").setValue(gender);
+                    .child("companyName").setValue(companyName);
             FirebaseDatabase.getInstance().getReference("Users").child(uid)
-                    .child("address").setValue(address)
+                    .child("position").setValue(position)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(this, "Profile updated!", Toast.LENGTH_SHORT).show();
