@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
+
         return view;
     }
 
@@ -97,67 +98,75 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    //Load only the upcoming event within 3 days
     private void loadUpcomingEvent() {
         DatabaseReference gigsRef = FirebaseDatabase.getInstance().getReference("Gigs");
         Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
 
         String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Date now = new Date();
 
         gigsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault());
-                Date now = new Date();
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(now);
-                cal.add(Calendar.DAY_OF_YEAR, 3); // +3 days
-                Date threeDaysLater = cal.getTime();
-
-                boolean foundUpcoming = false;
+                Gig nearestGig = null;
+                long nearestTime = Long.MAX_VALUE;
 
                 for (DataSnapshot snap : snapshot.getChildren()) {
-                    String posterId = snap.child("posterId").getValue(String.class);
-
-                    if (posterId != null && posterId.equals(currentUserId)) {
+                    String ownerId = snap.child("ownerId").getValue(String.class);
+                    if (ownerId != null && ownerId.equals(currentUserId)) {
+                        // Read gig data
+                        String id = snap.getKey();
                         String gigName = snap.child("gigName").getValue(String.class);
                         String location = snap.child("location").getValue(String.class);
-                        String datetimeStr = snap.child("datetime").getValue(String.class);
 
-                        try {
-                            Date eventDate = sdf.parse(datetimeStr);
-                            if (eventDate != null && eventDate.after(now) && eventDate.before(threeDaysLater)) {
+                        // Read schedule map
+                        DataSnapshot scheduleSnap = snap.child("schedule");
+                        HashMap<String, String> schedule = new HashMap<>();
+                        for (DataSnapshot dateSnap : scheduleSnap.getChildren()) {
+                            schedule.put(dateSnap.getKey(), dateSnap.getValue(String.class));
+                        }
 
-                                //Schedule notification 1 day before event
-                                Gig gig = new Gig(gigName, location, datetimeStr);
-                                scheduleNotificationForEvent(gig, 1);
+                        Gig gig = new Gig();
+                        gig.setId(id);
+                        gig.setGigName(gigName);
+                        gig.setLocation(location);
+                        gig.setOwnerId(ownerId);
+                        gig.setSchedule(schedule);
 
-                                // (Optional) This part is UI related — it’s safe to leave it unchanged
-                                foundUpcoming = true;
-                                updateEventCardUI(gigName, datetimeStr, location);
+                        long gigTime = gig.getDateTimeMillis();
+                        if (gigTime > now.getTime()) {
+                            //Schedule notification for each future event
+                            scheduleNotificationForEvent(gig, 1);
 
-                                List<Address> addresses = geocoder.getFromLocationName(location, 1);
-                                if (addresses != null && !addresses.isEmpty()) {
-                                    Address addr = addresses.get(0);
-                                    LatLng latLng = new LatLng(addr.getLatitude(), addr.getLongitude());
-
-                                    mMap.addMarker(new MarkerOptions()
-                                            .position(latLng)
-                                            .title(gigName)
-                                            .snippet(location));
-
-                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f));
-                                }
-
-                                break; // Stop after scheduling 1st upcoming event
+                            // Track the nearest one for display on map and card
+                            if (gigTime < nearestTime) {
+                                nearestTime = gigTime;
+                                nearestGig = gig;
                             }
-                        } catch (Exception e) {
-                            Log.e("DATE_PARSE", "Error parsing date: " + e.getMessage());
                         }
                     }
                 }
 
-                if (!foundUpcoming) {
+                // Update UI based on nearest event
+                if (nearestGig != null) {
+                    updateEventCardUI(nearestGig.getTitle(), nearestGig.getFormattedDateTime(), nearestGig.getLocation());
+
+                    try {
+                        List<Address> addresses = geocoder.getFromLocationName(nearestGig.getLocation(), 1);
+                        if (!addresses.isEmpty()) {
+                            Address address = addresses.get(0);
+                            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+
+                            mMap.addMarker(new MarkerOptions()
+                                    .position(latLng)
+                                    .title(nearestGig.getTitle())
+                                    .snippet(nearestGig.getLocation()));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f));
+                        }
+                    } catch (IOException e) {
+                        Log.e("Geocoder", "Location error: " + e.getMessage());
+                    }
+                } else {
                     updateEventCardUI("none", "", "");
                 }
             }
@@ -168,6 +177,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             }
         });
     }
+
+
 
     //Updates for upcoming or fallback event
     private void updateEventCardUI(String title, String datetime, String location) {
@@ -204,4 +215,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             WorkManager.getInstance(requireContext()).enqueue(request);
         }
     }
+    
+
 }
